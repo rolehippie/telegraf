@@ -1,0 +1,85 @@
+- name: download key
+  apt_key:
+    url: https://repos.influxdata.com/influxdb.key
+    id: 05CE15085FC09D18E99EFB22684A14CF2582E0C5
+    state: present
+  tags:
+    - telegraf
+
+- name: add repository
+  apt_repository:
+    repo: 'deb https://repos.influxdata.com/{{ ansible_distribution | lower }} {{ ansible_distribution_release }} stable'
+    filename: telegraf
+    update_cache: yes
+    state: present
+  tags:
+    - telegraf
+
+- name: install packages
+  with_items:
+    - telegraf
+  package:
+    name: '{{ item }}'
+    state: present
+  tags:
+    - telegraf
+
+- name: template files
+  when: telegraf_templates != ""
+  register: templates
+  delegate_to: localhost
+  find:
+    paths: '{{ telegraf_templates }}'
+    file_type: file
+  tags:
+    - telegraf
+
+- name: template write
+  when: telegraf_templates != ""
+  with_items: '{{ templates.files }}'
+  notify:
+    - restart telegraf
+  template:
+    src: '{{ item.path }}'
+    dest: /etc/telegraf/telegraf.d/{{ item.path | basename }}
+  tags:
+    - telegraf
+
+- name: docker group
+  notify:
+    - restart telegraf
+  user:
+    name: telegraf
+    groups: docker
+    append: yes
+  tags:
+    - telegraf
+
+- name: sudo group
+  notify:
+    - restart telegraf
+  user:
+    name: telegraf
+    groups: sudo
+    append: yes
+  tags:
+    - telegraf
+
+- name: config file
+  notify:
+    - restart telegraf
+  template:
+    src: config.j2
+    dest: /etc/telegraf/telegraf.conf
+  tags:
+    - telegraf
+
+- name: start service
+  systemd:
+    name: telegraf
+    state: started
+    daemon_reload: yes
+    masked: no
+    enabled: yes
+  tags:
+    - telegraf

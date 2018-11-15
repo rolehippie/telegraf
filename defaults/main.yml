@@ -9,7 +9,7 @@ telegraf_precision:
 telegraf_debug: False
 telegraf_quiet: False
 telegraf_logfile:
-telegraf_hostname: '{{ ansible_fqdn }}'
+telegraf_hostname: '{{ inventory_hostname }}'
 telegraf_omit_hostname: False
 telegraf_templates:
 

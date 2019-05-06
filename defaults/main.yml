@@ -8,13 +8,13 @@ telegraf_flush_jitter: 0s
 telegraf_precision:
 telegraf_debug: False
 telegraf_quiet: False
-telegraf_logfile:
+telegraf_logfile: /var/log/telegraph
 telegraf_hostname: '{{ inventory_hostname }}'
 telegraf_omit_hostname: False
-telegraf_templates:
+telegraf_templates: []
 
 telegraf_prometheus_listen: 0.0.0.0:9273
-telegraf_prometheus_username:
-telegraf_prometheus_password:
+telegraf_prometheus_username: myuser
+telegraf_prometheus_password: securepasswd
 
 telegraf_inputs: []

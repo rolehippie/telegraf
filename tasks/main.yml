@@ -25,7 +25,6 @@
     - telegraf
 
 - name: template files
-  when: telegraf_templates != ""
   register: templates
   delegate_to: localhost
   find:

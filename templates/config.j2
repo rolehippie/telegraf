@@ -1,3 +1,4 @@
+#jinja2: lstrip_blocks: True
 [agent]
   interval = "{{ telegraf_interval }}"
   round_interval = {{ telegraf_round_interval | lower }}
@@ -15,8 +16,10 @@
 
 [[outputs.prometheus_client]]
   listen = "{{ telegraf_prometheus_listen }}"
+  {% if telegraf_prometheus_username is defined and telegraf_prometheus_username != "" %}
   basic_username = "{{ telegraf_prometheus_username }}"
   basic_password = "{{ telegraf_prometheus_password }}"
+  {% endif %}
 
 [[inputs.diskio]]
   # no configuration

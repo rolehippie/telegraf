@@ -14,8 +14,7 @@ telegraf_omit_hostname: False
 telegraf_templates: ""
 
 telegraf_prometheus_listen: 0.0.0.0:9273
-# set to enable basic auth
-# telegraf_prometheus_username: myuser
-# telegraf_prometheus_password: securepasswd
+telegraf_prometheus_username:
+telegraf_prometheus_password:
 
 telegraf_inputs: []

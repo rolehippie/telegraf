@@ -17,4 +17,45 @@ telegraf_prometheus_listen: 0.0.0.0:9273
 telegraf_prometheus_username:
 telegraf_prometheus_password:
 
-telegraf_inputs: []
+telegraf_plugins_default:
+  - plugin: net
+    config:
+      - ignore_protocol_stats = false
+      - interfaces =  ["eth*"]
+  - plugin: cpu
+    config:
+      - percpu = true
+      - totalcpu = true
+      - collect_cpu_time = false
+      - report_active = false
+  - plugin: disk
+    config:
+      - ignore_fs = ["tmpfs", "devtmpfs", "devfs"]
+  - plugin: conntrack
+    config:
+      - dirs = ["/proc/sys/net/netfilter"]
+  - plugin: docker
+    config:
+      - endpoint = "unix:///var/run/docker.sock"
+      - timeout = "5s"
+      - perdevice = true
+      - total = true
+  - plugin: filestat
+    config:
+      - files = ["/var/log/**.log"]
+  - plugin: ping
+    config:
+      - count = 3
+      - ping_interval = 1.0
+      - timeout = 1.0
+      - deadline = 10
+      - urls = ["google.de"]
+  - plugin: netstat
+  - plugin: diskio
+  - plugin: kernel
+  - plugin: mem
+  - plugin: processes
+  - plugin: swap
+  - plugin: system
+  - plugin: kernel_vmstat
+  - plugin: linux_sysctl_fs

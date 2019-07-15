@@ -18,61 +18,21 @@
   listen = "{{ telegraf_prometheus_listen }}"
   basic_username = "{{ telegraf_prometheus_username }}"
   basic_password = "{{ telegraf_prometheus_password }}"
+{% if telegraf_plugins_default is defined and telegraf_plugins_default is iterable %}
+{% for item in telegraf_plugins_default %}
+{% if item.state | default("present") == "present" %}
 
-[[inputs.diskio]]
-  # no configuration
-
-[[inputs.kernel]]
-  # no configuration
-
-[[inputs.mem]]
-  # no configuration
-
-[[inputs.processes]]
-  # no configuration
-
-[[inputs.swap]]
-  # no configuration
-
-[[inputs.system]]
-  # no configuration
-
-[[inputs.kernel_vmstat]]
-  # no configuration
-
-[[inputs.linux_sysctl_fs]]
-  # no configuration
-
-[[inputs.netstat]]
-  # no configuration
-
-[[inputs.net]]
-  # no configuration
-
-[[inputs.cpu]]
-  percpu = true
-  totalcpu = true
-  collect_cpu_time = false
-  report_active = false
-
-[[inputs.disk]]
-  ignore_fs = ["tmpfs", "devtmpfs", "devfs"]
-
-[[inputs.conntrack]]
-  dirs = ["/proc/sys/net/netfilter"]
-
-[[inputs.docker]]
-  endpoint = "unix:///var/run/docker.sock"
-  timeout = "5s"
-  perdevice = true
-  total = true
-
-[[inputs.filestat]]
-  files = ["/var/log/**.log"]
-
-[[inputs.ping]]
-  count = 3
-  ping_interval = 1.0
-  timeout = 1.0
-  deadline = 10
-  urls = ["google.de"]
+[[inputs.{{ item.plugin }}]]
+{% if item.interval is defined %}
+    interval = "{{ item.interval }}s"
+{% endif %}
+{% if item.config is defined and item.config is iterable %}
+{% for item in item.config %}
+    {{ item }}
+{% endfor %}
+{% else %}
+    # no configuration
+{% endif %}
+{% endif %}
+{% endfor %}
+{% endif %}

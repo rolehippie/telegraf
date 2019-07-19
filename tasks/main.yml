@@ -16,7 +16,7 @@
     - telegraf
 
 - name: install packages
-  with_items:
+  loop:
     - telegraf
   package:
     name: '{{ item }}'
@@ -36,7 +36,9 @@
 
 - name: template write
   when: telegraf_templates != ""
-  with_items: '{{ templates.files }}'
+  loop: '{{ templates.files }}'
+  loop_control:
+    label: '/etc/telegraf/telegraf.d/{{ item.path | basename }}'
   notify:
     - restart telegraf
   template:

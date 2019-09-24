@@ -14,6 +14,13 @@
   hostname = "{{ telegraf_hostname }}"
   omit_hostname = {{ telegraf_omit_hostname | lower }}
 
+{% if telegraf_global_tags | length > 0 %}
+[global_tags]
+{% for tag in telegraf_global_tags %}
+  {{ tag.key }} = "{{ tag.value }}"
+{% endfor %}
+
+{% endif %}
 [[outputs.prometheus_client]]
   listen = "{{ telegraf_prometheus_listen }}"
   basic_username = "{{ telegraf_prometheus_username }}"

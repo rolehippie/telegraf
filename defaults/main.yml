@@ -17,6 +17,8 @@ telegraf_prometheus_listen: 0.0.0.0:9273
 telegraf_prometheus_username:
 telegraf_prometheus_password:
 
+telegraf_global_tags: []
+
 telegraf_plugins_default:
   - plugin: net
     config:

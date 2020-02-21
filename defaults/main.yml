@@ -1,24 +1,119 @@
+# Standards: 0.1
+---
+# @var telegraf_interval:description: Default data collection interval for all inputs
 telegraf_interval: 10s
-telegraf_round_interval: True
-telegraf_metric_batch_size: 1000
-telegraf_metric_buffer_limit: 10000
-telegraf_collection_jitter: 0s
-telegraf_flush_interval: 10s
-telegraf_flush_jitter: 0s
-telegraf_precision:
-telegraf_debug: False
-telegraf_quiet: False
-telegraf_logfile: ""
-telegraf_hostname: '{{ inventory_hostname }}'
-telegraf_omit_hostname: False
-telegraf_templates: ""
 
+# @var telegraf_round_interval:description: Rounds collection interval to interval
+telegraf_round_interval: True
+
+# @var telegraf_metric_batch_size:description: Telegraf will send metrics to outputs in batches of this amount
+telegraf_metric_batch_size: 1000
+
+# @var telegraf_metric_buffer_limit:description: Maximum number of unwritten metrics per output
+telegraf_metric_buffer_limit: 10000
+
+# @var telegraf_collection_jitter:description: Collection jitter is used to jitter the collection by a random amount
+telegraf_collection_jitter: 0s
+
+# @var telegraf_flush_interval:description: Default flushing interval for all outputs
+telegraf_flush_interval: 10s
+
+# @var telegraf_flush_jitter:description: Jitter the flush interval by a random amount
+telegraf_flush_jitter: 0s
+
+# @var telegraf_precision:description: Precision will be set to the same timestamp order as the collection interval
+telegraf_precision:
+
+# @var telegraf_debug:description: Log at debug level
+telegraf_debug: False
+
+# @var telegraf_quiet:description: Log only error level messages
+telegraf_quiet: False
+
+# @var telegraf_logtarget:description: Log target controls the destination for logs
+telegraf_logtarget: stderr
+
+# @var telegraf_logfile:description: Name of the file to be logged to when using the file logtarget
+telegraf_logfile:
+
+# @var telegraf_logfile_rotation_interval:description: The logfile will be rotated after the time interval specified
+telegraf_logfile_rotation_interval:
+
+# @var telegraf_logfile_rotation_max_size:description: The logfile will be rotated when it becomes larger than the specified size
+telegraf_logfile_rotation_max_size:
+
+# @var telegraf_logfile_rotation_max_archives:description: Maximum number of rotated archives to keep, any older logs are deleted
+telegraf_logfile_rotation_max_archives:
+
+# @var telegraf_hostname:description: Override default hostname
+telegraf_hostname: '{{ inventory_hostname }}'
+
+# @var telegraf_omit_hostname:description: If set to True, do no set the host tag in the telegraf agent
+telegraf_omit_hostname: False
+
+# @var telegraf_templates:description: Path to templates loaded into telegraf.d directory
+telegraf_templates:
+
+# @var telegraf_prometheus_listen:description: Address to listen for Prometheus
 telegraf_prometheus_listen: 0.0.0.0:9273
+
+# @var telegraf_prometheus_username:description: Username used by Prometheus
 telegraf_prometheus_username:
+
+# @var telegraf_prometheus_password:description: Password used by Prometheus
 telegraf_prometheus_password:
 
+# @var telegraf_global_tags:description: List of global tags
+# @var telegraf_global_tags:example: >
+# telegraf_global_tags:
+#   - key: rack
+#     value: r155
+#   - key: switch
+#     value: sw5
+# @end
 telegraf_global_tags: []
 
+# @var telegraf_processors_default:description: List of default processors, combined with extra
+# @var telegraf_processors_default:example: >
+# telegraf_processors_default
+#   - plugin: foo
+#     config:
+#       - option1 = "value1"
+#       - option2 = "value2"
+# @end
+telegraf_processors_default: []
+
+# @var telegraf_processors_extra:description: List of extra processors, combined with default
+# @var telegraf_processors_extra:example: >
+# telegraf_processors_extra
+#   - plugin: foo
+#     config:
+#       - option1 = "value1"
+#       - option2 = "value2"
+# @end
+telegraf_processors_extra: []
+
+# @var telegraf_aggregators_default:description: List of default aggregators, combined with extra
+# @var telegraf_aggregators_default:example: >
+# telegraf_aggregators_default
+#   - plugin: foo
+#     config:
+#       - option1 = "value1"
+#       - option2 = "value2"
+# @end
+telegraf_aggregators_default: []
+
+# @var telegraf_aggregators_extra:description: List of extra aggregators, combined with default
+# @var telegraf_aggregators_extra:example: >
+# telegraf_aggregators_extra
+#   - plugin: foo
+#     config:
+#       - option1 = "value1"
+#       - option2 = "value2"
+# @end
+telegraf_aggregators_extra: []
+
+# @var telegraf_plugins_default:description: List of default plugins, combined with extra
 telegraf_plugins_default:
   - plugin: net
     config:
@@ -61,3 +156,16 @@ telegraf_plugins_default:
   - plugin: system
   - plugin: kernel_vmstat
   - plugin: linux_sysctl_fs
+
+# @var telegraf_plugins_extra:description: List of extra plugins, combined with default
+# @var telegraf_plugins_extra:example: >
+# telegraf_plugins_extra
+#   - plugin: net
+#     config:
+#       - ignore_protocol_stats = false
+#       - interfaces =  ["eth*"]
+# @end
+# @end
+telegraf_plugins_extra: []
+
+...

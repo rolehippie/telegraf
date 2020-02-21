@@ -1,4 +1,6 @@
-- name: download key
+# Standards: 0.1
+---
+- name: Download repo key
   apt_key:
     url: https://repos.influxdata.com/influxdb.key
     id: 05CE15085FC09D18E99EFB22684A14CF2582E0C5
@@ -6,7 +8,7 @@
   tags:
     - telegraf
 
-- name: add repository
+- name: Add apt repository
   apt_repository:
     repo: 'deb https://repos.influxdata.com/{{ ansible_distribution | lower }} {{ ansible_distribution_release }} stable'
     filename: telegraf
@@ -15,7 +17,7 @@
   tags:
     - telegraf
 
-- name: install packages
+- name: Install required packages
   loop:
     - telegraf
   package:
@@ -24,9 +26,17 @@
   tags:
     - telegraf
 
-- name: template files
-  when: telegraf_templates != ""
-  register: templates
+- name: Combine default lists
+  set_fact:
+    telegraf_processors: '{{ telegraf_processors_default + telegraf_processors_extra }}'
+    telegraf_aggregators: '{{ telegraf_aggregators_default + telegraf_aggregators_extra }}'
+    telegraf_plugins: '{{ telegraf_plugins_default + telegraf_plugins_extra }}'
+  tags:
+    - telegraf
+
+- name: Find template files
+  when: telegraf_templates | default(False)
+  register: telegraf_templates_find
   delegate_to: localhost
   find:
     paths: '{{ telegraf_templates }}'
@@ -34,22 +44,22 @@
   tags:
     - telegraf
 
-- name: template write
-  when: telegraf_templates != ""
-  loop: '{{ templates.files }}'
+- name: Write template files
+  loop: '{{ telegraf_templates_find.files }}'
   loop_control:
     label: '/etc/telegraf/telegraf.d/{{ item.path | basename }}'
+  when: telegraf_templates | default(False)
   notify:
-    - restart telegraf
+    - Restart telegraf
   template:
     src: '{{ item.path }}'
     dest: /etc/telegraf/telegraf.d/{{ item.path | basename }}
   tags:
     - telegraf
 
-- name: docker group
+- name: Add docker group
   notify:
-    - restart telegraf
+    - Restart telegraf
   user:
     name: telegraf
     groups: docker
@@ -57,9 +67,9 @@
   tags:
     - telegraf
 
-- name: sudo group
+- name: Add sudo group
   notify:
-    - restart telegraf
+    - Restart telegraf
   user:
     name: telegraf
     groups: sudo
@@ -67,16 +77,16 @@
   tags:
     - telegraf
 
-- name: config file
+- name: Write config file
   notify:
-    - restart telegraf
+    - Restart telegraf
   template:
     src: config.j2
     dest: /etc/telegraf/telegraf.conf
   tags:
     - telegraf
 
-- name: start service
+- name: Start telegraf service
   systemd:
     name: telegraf
     state: started
@@ -85,3 +95,5 @@
     enabled: yes
   tags:
     - telegraf
+
+...

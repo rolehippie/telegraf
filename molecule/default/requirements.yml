@@ -1,9 +1,0 @@
----
-- src: https://github.com/rolehippie/docker
-  scm: git
-  version: master
-- src: https://github.com/rolehippie/sudo
-  scm: git
-  version: master
-
-...

@@ -10,9 +10,9 @@
 
 - name: Add apt repository
   apt_repository:
-    repo: 'deb https://repos.influxdata.com/{{ ansible_distribution | lower }} {{ ansible_distribution_release }} stable'
+    repo: "deb https://repos.influxdata.com/{{ ansible_distribution | lower }} {{ ansible_distribution_release }} stable"
     filename: telegraf
-    update_cache: yes
+    update_cache: True
     state: present
   tags:
     - telegraf
@@ -21,16 +21,16 @@
   loop:
     - telegraf
   package:
-    name: '{{ item }}'
+    name: "{{ item }}"
     state: present
   tags:
     - telegraf
 
 - name: Combine default lists
   set_fact:
-    telegraf_processors: '{{ telegraf_processors_default + telegraf_processors_extra }}'
-    telegraf_aggregators: '{{ telegraf_aggregators_default + telegraf_aggregators_extra }}'
-    telegraf_plugins: '{{ telegraf_plugins_default + telegraf_plugins_extra }}'
+    telegraf_processors: "{{ telegraf_processors_default + telegraf_processors_extra }}"
+    telegraf_aggregators: "{{ telegraf_aggregators_default + telegraf_aggregators_extra }}"
+    telegraf_plugins: "{{ telegraf_plugins_default + telegraf_plugins_extra }}"
   tags:
     - telegraf
 
@@ -39,20 +39,20 @@
   register: telegraf_templates_find
   delegate_to: localhost
   find:
-    paths: '{{ telegraf_templates }}'
+    paths: "{{ telegraf_templates }}"
     file_type: file
   tags:
     - telegraf
 
 - name: Write template files
-  loop: '{{ telegraf_templates_find.files }}'
+  loop: "{{ telegraf_templates_find.files }}"
   loop_control:
-    label: '/etc/telegraf/telegraf.d/{{ item.path | basename }}'
+    label: "/etc/telegraf/telegraf.d/{{ item.path | basename }}"
   when: telegraf_templates | default(False)
   notify:
     - Restart telegraf
   template:
-    src: '{{ item.path }}'
+    src: "{{ item.path }}"
     dest: /etc/telegraf/telegraf.d/{{ item.path | basename }}
   tags:
     - telegraf
@@ -63,7 +63,7 @@
   user:
     name: telegraf
     groups: docker
-    append: yes
+    append: True
   tags:
     - telegraf
 
@@ -73,7 +73,7 @@
   user:
     name: telegraf
     groups: sudo
-    append: yes
+    append: True
   tags:
     - telegraf
 
@@ -90,9 +90,9 @@
   systemd:
     name: telegraf
     state: started
-    daemon_reload: yes
-    masked: no
-    enabled: yes
+    daemon_reload: True
+    masked: False
+    enabled: True
   tags:
     - telegraf
 

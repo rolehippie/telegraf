@@ -2,6 +2,6 @@
 - name: Converge
   hosts: all
   roles:
-    - role: sudo
     - role: docker
+    - role: sudo
     - role: telegraf

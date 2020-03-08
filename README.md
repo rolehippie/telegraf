@@ -426,7 +426,8 @@ telegraf_templates:
 
 ## Dependencies
 
-None.
+- '[docker](https://github.com/rolehippie/docker)'
+- '[sudo](https://github.com/rolehippie/sudo)'
 
 ## License
 
@@ -434,4 +435,4 @@ Apache-2.0
 
 ## Author
 
-Thomas Boerger
+[Thomas Boerger](https://github.com/tboerger)

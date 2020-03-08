@@ -426,8 +426,10 @@ telegraf_templates:
 
 ## Dependencies
 
-- '[docker](https://github.com/rolehippie/docker)'
-- '[sudo](https://github.com/rolehippie/sudo)'
+- '['
+- '  "[docker](https://github.com/rolehippie/docker)",'
+- '  "[sudo](https://github.com/rolehippie/sudo)"'
+- ']'
 
 ## License
 

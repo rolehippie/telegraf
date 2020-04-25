@@ -1,5 +1,11 @@
 # Standards: 0.1
 ---
+# @var telegraf_repo_distribution:description: Enforce a specific distribution for repo source
+telegraf_repo_distribution:
+
+# @var telegraf_repo_release:description: Enforce a specific release for repo source
+telegraf_repo_release:
+
 # @var telegraf_interval:description: Default data collection interval for all inputs
 telegraf_interval: 10s
 

@@ -6,6 +6,12 @@ telegraf_repo_distribution:
 # @var telegraf_repo_release:description: Enforce a specific release for repo source
 telegraf_repo_release:
 
+# @var requires_docker_group:description: Optionally disable docker group join
+requires_docker_group: True
+
+# @var requires_sudo_group:description: Optionally disable sudo group join
+requires_sudo_group: True
+
 # @var telegraf_interval:description: Default data collection interval for all inputs
 telegraf_interval: 10s
 

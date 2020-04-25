@@ -60,6 +60,7 @@
 - name: Add docker group
   notify:
     - Restart telegraf
+  when: requires_docker_group
   user:
     name: telegraf
     groups: docker
@@ -70,6 +71,7 @@
 - name: Add sudo group
   notify:
     - Restart telegraf
+  when: requires_sudo_group
   user:
     name: telegraf
     groups: sudo

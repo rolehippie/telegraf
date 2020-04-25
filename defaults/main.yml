@@ -1,10 +1,12 @@
 # Standards: 0.1
 ---
 # @var telegraf_repo_distribution:description: Enforce a specific distribution for repo source
-telegraf_repo_distribution:
+# @var telegraf_repo_distribution:value: telegraf_repo_distribution | default(ansible_distribution) | lower
+# telegraf_repo_distribution:
 
 # @var telegraf_repo_release:description: Enforce a specific release for repo source
-telegraf_repo_release:
+# @var telegraf_repo_release:value: telegraf_repo_release | default(ansible_distribution_release)
+# telegraf_repo_release:
 
 # @var requires_docker_group:description: Optionally disable docker group join
 requires_docker_group: True

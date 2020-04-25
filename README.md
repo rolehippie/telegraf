@@ -7,6 +7,8 @@ Ansible role to configure telegraf
 ## Table of content
 
 * [Default Variables](#default-variables)
+  * [requires_docker_group](#requires_docker_group)
+  * [requires_sudo_group](#requires_sudo_group)
   * [telegraf_aggregators_default](#telegraf_aggregators_default)
   * [telegraf_aggregators_extra](#telegraf_aggregators_extra)
   * [telegraf_collection_jitter](#telegraf_collection_jitter)
@@ -33,6 +35,8 @@ Ansible role to configure telegraf
   * [telegraf_prometheus_password](#telegraf_prometheus_password)
   * [telegraf_prometheus_username](#telegraf_prometheus_username)
   * [telegraf_quiet](#telegraf_quiet)
+  * [telegraf_repo_distribution](#telegraf_repo_distribution)
+  * [telegraf_repo_release](#telegraf_repo_release)
   * [telegraf_round_interval](#telegraf_round_interval)
   * [telegraf_templates](#telegraf_templates)
 * [Dependencies](#dependencies)
@@ -42,6 +46,26 @@ Ansible role to configure telegraf
 ---
 
 ## Default Variables
+
+### requires_docker_group
+
+Optionally disable docker group join
+
+#### Default value
+
+```YAML
+requires_docker_group: true
+```
+
+### requires_sudo_group
+
+Optionally disable sudo group join
+
+#### Default value
+
+```YAML
+requires_sudo_group: true
+```
 
 ### telegraf_aggregators_default
 
@@ -402,6 +426,26 @@ Log only error level messages
 
 ```YAML
 telegraf_quiet: false
+```
+
+### telegraf_repo_distribution
+
+Enforce a specific distribution for repo source
+
+#### Default value
+
+```YAML
+telegraf_repo_distribution | default(ansible_distribution) | lower
+```
+
+### telegraf_repo_release
+
+Enforce a specific release for repo source
+
+#### Default value
+
+```YAML
+telegraf_repo_release | default(ansible_distribution_release)
 ```
 
 ### telegraf_round_interval

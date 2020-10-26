@@ -1,4 +1,4 @@
-# Standards: 0.1
+# Standards: 1.2
 ---
 # @var telegraf_repo_distribution:description: Enforce a specific distribution for repo source
 # @var telegraf_repo_distribution:value: telegraf_repo_distribution | default(ansible_distribution) | lower

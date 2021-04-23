@@ -71,6 +71,9 @@ telegraf_templates:
 # @var telegraf_prometheus_listen:description: Address to listen for Prometheus
 telegraf_prometheus_listen: 0.0.0.0:9273
 
+# @var telegraf_prometheus_version:description: Metrics version used by the prometheus client output
+telegraf_prometheus_version: 2
+
 # @var telegraf_prometheus_username:description: Username used by Prometheus
 telegraf_prometheus_username:
 

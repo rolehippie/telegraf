@@ -32,6 +32,7 @@
 {% endif %}
 [[outputs.prometheus_client]]
   listen = "{{ telegraf_prometheus_listen }}"
+  metric_version = {{ telegraf_prometheus_version }}
 {% if telegraf_prometheus_username | default(False) %}
   basic_username = "{{ telegraf_prometheus_username }}"
 {% endif %}

@@ -40,6 +40,7 @@ Building and improving this Ansible role have been sponsored by my employer **Pr
   * [telegraf_prometheus_listen](#telegraf_prometheus_listen)
   * [telegraf_prometheus_password](#telegraf_prometheus_password)
   * [telegraf_prometheus_username](#telegraf_prometheus_username)
+  * [telegraf_prometheus_version](#telegraf_prometheus_version)
   * [telegraf_quiet](#telegraf_quiet)
   * [telegraf_repo_distribution](#telegraf_repo_distribution)
   * [telegraf_repo_release](#telegraf_repo_release)
@@ -422,6 +423,16 @@ Username used by Prometheus
 
 ```YAML
 telegraf_prometheus_username:
+```
+
+### telegraf_prometheus_version
+
+Metrics version used by the prometheus client output
+
+#### Default value
+
+```YAML
+telegraf_prometheus_version: 2
 ```
 
 ### telegraf_quiet

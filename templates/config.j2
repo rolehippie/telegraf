@@ -32,8 +32,12 @@
 {% endif %}
 [[outputs.prometheus_client]]
   listen = "{{ telegraf_prometheus_listen }}"
+{% if telegraf_prometheus_username | default(False) %}
   basic_username = "{{ telegraf_prometheus_username }}"
+{% endif %}
+{% if telegraf_prometheus_password | default(False) %}
   basic_password = "{{ telegraf_prometheus_password }}"
+{% endif %}
 {% if telegraf_processors is defined and telegraf_processors is iterable %}
 {% for item in telegraf_processors %}
 

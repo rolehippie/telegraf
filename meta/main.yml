@@ -21,6 +21,8 @@
 # [rolehippie.sudo](https://github.com/rolehippie/sudo)
 # @end
 galaxy_info:
+  role_name: telegraf
+  namespace: rolehippie
   author: Thomas Boerger
   description: Ansible role to install and configure telegraf
   license: Apache-2.0

@@ -1,54 +1,55 @@
 # telegraf
 
-[![Source Code](https://img.shields.io/badge/github-source%20code-blue?logo=github&logoColor=white)](https://github.com/rolehippie/telegraf) [![Testing Build](https://github.com/rolehippie/telegraf/workflows/testing/badge.svg)](https://github.com/rolehippie/telegraf/actions?query=workflow%3Atesting) [![Readme Build](https://github.com/rolehippie/telegraf/workflows/readme/badge.svg)](https://github.com/rolehippie/telegraf/actions?query=workflow%3Areadme) [![Galaxy Build](https://github.com/rolehippie/telegraf/workflows/galaxy/badge.svg)](https://github.com/rolehippie/telegraf/actions?query=workflow%3Agalaxy) [![License: Apache-2.0](https://img.shields.io/github/license/rolehippie/telegraf)](https://github.com/rolehippie/telegraf/blob/master/LICENSE) 
+[![Source Code](https://img.shields.io/badge/github-source%20code-blue?logo=github&logoColor=white)](https://github.com/rolehippie/telegraf) [![Testing Build](https://github.com/rolehippie/telegraf/workflows/testing/badge.svg)](https://github.com/rolehippie/telegraf/actions?query=workflow%3Atesting) [![Readme Build](https://github.com/rolehippie/telegraf/workflows/readme/badge.svg)](https://github.com/rolehippie/telegraf/actions?query=workflow%3Areadme) [![Galaxy Build](https://github.com/rolehippie/telegraf/workflows/galaxy/badge.svg)](https://github.com/rolehippie/telegraf/actions?query=workflow%3Agalaxy) [![License: Apache-2.0](https://img.shields.io/github/license/rolehippie/telegraf)](https://github.com/rolehippie/telegraf/blob/master/LICENSE)
 
-Ansible role to install and configure telegraf. 
+Ansible role to install and configure telegraf.
 
-## Sponsor 
+## Sponsor
 
-[![Proact Deutschland GmbH](https://proact.eu/wp-content/uploads/2020/03/proact-logo.png)](https://proact.eu) 
+[![Proact Deutschland GmbH](https://proact.eu/wp-content/uploads/2020/03/proact-logo.png)](https://proact.eu)
 
 Building and improving this Ansible role have been sponsored by my employer **Proact Deutschland GmbH**.
 
 ## Table of content
 
-* [Default Variables](#default-variables)
-  * [requires_docker_group](#requires_docker_group)
-  * [requires_sudo_group](#requires_sudo_group)
-  * [telegraf_aggregators_default](#telegraf_aggregators_default)
-  * [telegraf_aggregators_extra](#telegraf_aggregators_extra)
-  * [telegraf_collection_jitter](#telegraf_collection_jitter)
-  * [telegraf_debug](#telegraf_debug)
-  * [telegraf_flush_interval](#telegraf_flush_interval)
-  * [telegraf_flush_jitter](#telegraf_flush_jitter)
-  * [telegraf_global_tags](#telegraf_global_tags)
-  * [telegraf_hostname](#telegraf_hostname)
-  * [telegraf_interval](#telegraf_interval)
-  * [telegraf_logfile](#telegraf_logfile)
-  * [telegraf_logfile_rotation_interval](#telegraf_logfile_rotation_interval)
-  * [telegraf_logfile_rotation_max_archives](#telegraf_logfile_rotation_max_archives)
-  * [telegraf_logfile_rotation_max_size](#telegraf_logfile_rotation_max_size)
-  * [telegraf_logtarget](#telegraf_logtarget)
-  * [telegraf_metric_batch_size](#telegraf_metric_batch_size)
-  * [telegraf_metric_buffer_limit](#telegraf_metric_buffer_limit)
-  * [telegraf_omit_hostname](#telegraf_omit_hostname)
-  * [telegraf_plugins_default](#telegraf_plugins_default)
-  * [telegraf_plugins_extra](#telegraf_plugins_extra)
-  * [telegraf_precision](#telegraf_precision)
-  * [telegraf_processors_default](#telegraf_processors_default)
-  * [telegraf_processors_extra](#telegraf_processors_extra)
-  * [telegraf_prometheus_listen](#telegraf_prometheus_listen)
-  * [telegraf_prometheus_password](#telegraf_prometheus_password)
-  * [telegraf_prometheus_username](#telegraf_prometheus_username)
-  * [telegraf_prometheus_version](#telegraf_prometheus_version)
-  * [telegraf_quiet](#telegraf_quiet)
-  * [telegraf_repo_distribution](#telegraf_repo_distribution)
-  * [telegraf_repo_release](#telegraf_repo_release)
-  * [telegraf_round_interval](#telegraf_round_interval)
-  * [telegraf_templates](#telegraf_templates)
-* [Dependencies](#dependencies)
-* [License](#license)
-* [Author](#author)
+- [Default Variables](#default-variables)
+  - [requires_docker_group](#requires_docker_group)
+  - [requires_sudo_group](#requires_sudo_group)
+  - [telegraf_aggregators_default](#telegraf_aggregators_default)
+  - [telegraf_aggregators_extra](#telegraf_aggregators_extra)
+  - [telegraf_collection_jitter](#telegraf_collection_jitter)
+  - [telegraf_debug](#telegraf_debug)
+  - [telegraf_flush_interval](#telegraf_flush_interval)
+  - [telegraf_flush_jitter](#telegraf_flush_jitter)
+  - [telegraf_global_tags](#telegraf_global_tags)
+  - [telegraf_hostname](#telegraf_hostname)
+  - [telegraf_interval](#telegraf_interval)
+  - [telegraf_logfile](#telegraf_logfile)
+  - [telegraf_logfile_rotation_interval](#telegraf_logfile_rotation_interval)
+  - [telegraf_logfile_rotation_max_archives](#telegraf_logfile_rotation_max_archives)
+  - [telegraf_logfile_rotation_max_size](#telegraf_logfile_rotation_max_size)
+  - [telegraf_logtarget](#telegraf_logtarget)
+  - [telegraf_metric_batch_size](#telegraf_metric_batch_size)
+  - [telegraf_metric_buffer_limit](#telegraf_metric_buffer_limit)
+  - [telegraf_omit_hostname](#telegraf_omit_hostname)
+  - [telegraf_plugins_default](#telegraf_plugins_default)
+  - [telegraf_plugins_extra](#telegraf_plugins_extra)
+  - [telegraf_precision](#telegraf_precision)
+  - [telegraf_processors_default](#telegraf_processors_default)
+  - [telegraf_processors_extra](#telegraf_processors_extra)
+  - [telegraf_prometheus_listen](#telegraf_prometheus_listen)
+  - [telegraf_prometheus_password](#telegraf_prometheus_password)
+  - [telegraf_prometheus_username](#telegraf_prometheus_username)
+  - [telegraf_prometheus_version](#telegraf_prometheus_version)
+  - [telegraf_quiet](#telegraf_quiet)
+  - [telegraf_repo_distribution](#telegraf_repo_distribution)
+  - [telegraf_repo_release](#telegraf_repo_release)
+  - [telegraf_round_interval](#telegraf_round_interval)
+  - [telegraf_templates](#telegraf_templates)
+- [Discovered Tags](#discovered-tags)
+- [Dependencies](#dependencies)
+- [License](#license)
+- [Author](#author)
 
 ---
 
@@ -485,10 +486,15 @@ Path to templates loaded into telegraf.d directory
 telegraf_templates:
 ```
 
+## Discovered Tags
+
+**_telegraf_**
+
+
 ## Dependencies
 
-* [rolehippie.docker](https://github.com/rolehippie/docker)
-* [rolehippie.sudo](https://github.com/rolehippie/sudo)
+- [rolehippie.docker](https://github.com/rolehippie/docker)
+- [rolehippie.sudo](https://github.com/rolehippie/sudo)
 
 ## License
 

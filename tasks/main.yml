@@ -54,6 +54,9 @@
   template:
     src: "{{ item.path }}"
     dest: /etc/telegraf/telegraf.d/{{ item.path | basename }}
+    owner: root
+    group: root
+    mode: u=rw,g=r,o=r
   tags:
     - telegraf
 
@@ -85,6 +88,9 @@
   template:
     src: config.j2
     dest: /etc/telegraf/telegraf.conf
+    owner: root
+    group: root
+    mode: u=rw,g=r,o=r
   tags:
     - telegraf
 

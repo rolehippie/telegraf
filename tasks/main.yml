@@ -18,7 +18,7 @@
 
 - name: Download repo key
   shell:
-    cmd: "curl -sSL 'https://repos.influxdata.com/influxdb.key' | gpg --dearmor --output {{ telegraf_keyring }}"
+    cmd: "curl -sSL 'https://repos.influxdata.com/influxdata-archive_compat.key' | gpg --dearmor --output {{ telegraf_keyring }}"
     creates: "{{ telegraf_keyring }}"
   tags:
     - telegraf

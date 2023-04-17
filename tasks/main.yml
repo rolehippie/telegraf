@@ -1,16 +1,31 @@
 # Standards: 1.2
 ---
-- name: Download repo key
+- name: Remove legacy key
   apt_key:
-    url: https://repos.influxdata.com/influxdb.key
     id: 05CE15085FC09D18E99EFB22684A14CF2582E0C5
-    state: present
+    state: absent
+  tags:
+    - telegraf
+
+- name: Remove legacy repo
+  apt_repository:
+    repo: "deb https://repos.influxdata.com/{{ telegraf_repo_distribution | default(ansible_distribution) | lower }} {{ telegraf_repo_release | default(ansible_distribution_release) }} stable"
+    filename: telegraf
+    update_cache: False
+    state: absent
+  tags:
+    - telegraf
+
+- name: Download repo key
+  shell:
+    cmd: "curl -sSL 'https://repos.influxdata.com/influxdb.key' | gpg --dearmor --output {{ telegraf_keyring }}"
+    creates: "{{ telegraf_keyring }}"
   tags:
     - telegraf
 
 - name: Add apt repository
   apt_repository:
-    repo: "deb https://repos.influxdata.com/{{ telegraf_repo_distribution | default(ansible_distribution) | lower }} {{ telegraf_repo_release | default(ansible_distribution_release) }} stable"
+    repo: "deb [signed-by={{ docker_keyring }}] https://repos.influxdata.com/{{ telegraf_repo_distribution | default(ansible_distribution) | lower }} {{ telegraf_repo_release | default(ansible_distribution_release) }} stable"
     filename: telegraf
     update_cache: True
     state: present

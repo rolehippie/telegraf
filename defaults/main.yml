@@ -185,4 +185,7 @@ telegraf_plugins_default:
 # @end
 telegraf_plugins_extra: []
 
+# @var telegraf_keyring:description: Path for the repository keyring
+telegraf_keyring: /usr/share/keyrings/telegraf-archive-keyring.gpg
+
 ...

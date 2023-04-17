@@ -25,7 +25,7 @@
 
 - name: Add apt repository
   apt_repository:
-    repo: "deb [signed-by={{ docker_keyring }}] https://repos.influxdata.com/{{ telegraf_repo_distribution | default(ansible_distribution) | lower }} {{ telegraf_repo_release | default(ansible_distribution_release) }} stable"
+    repo: "deb [signed-by={{ telegraf_keyring }}] https://repos.influxdata.com/{{ telegraf_repo_distribution | default(ansible_distribution) | lower }} {{ telegraf_repo_release | default(ansible_distribution_release) }} stable"
     filename: telegraf
     update_cache: True
     state: present

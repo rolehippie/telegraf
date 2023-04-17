@@ -28,6 +28,7 @@ Building and improving this Ansible role have been sponsored by my current and p
   - [telegraf_global_tags](#telegraf_global_tags)
   - [telegraf_hostname](#telegraf_hostname)
   - [telegraf_interval](#telegraf_interval)
+  - [telegraf_keyring](#telegraf_keyring)
   - [telegraf_logfile](#telegraf_logfile)
   - [telegraf_logfile_rotation_interval](#telegraf_logfile_rotation_interval)
   - [telegraf_logfile_rotation_max_archives](#telegraf_logfile_rotation_max_archives)
@@ -202,6 +203,16 @@ Default data collection interval for all inputs
 
 ```YAML
 telegraf_interval: 10s
+```
+
+### telegraf_keyring
+
+Path for the repository keyring
+
+#### Default value
+
+```YAML
+telegraf_keyring: /usr/share/keyrings/telegraf-archive-keyring.gpg
 ```
 
 ### telegraf_logfile

@@ -1,8 +1,8 @@
 # telegraf
 
-[![Source Code](https://img.shields.io/badge/github-source%20code-blue?logo=github&amp;logoColor=white)](https://github.com/rolehippie/telegraf)
+[![Source Code](https://img.shields.io/badge/github-source%20code-blue?logo=github&logoColor=white)](https://github.com/rolehippie/telegraf)
 [![General Workflow](https://github.com/rolehippie/telegraf/actions/workflows/general.yml/badge.svg)](https://github.com/rolehippie/telegraf/actions/workflows/general.yml)
-[![Readme Workflow](https://github.com/rolehippie/telegraf/actions/workflows/readme.yml/badge.svg)](https://github.com/rolehippie/telegraf/actions/workflows/readme.yml)
+[![Readme Workflow](https://github.com/rolehippie/telegraf/actions/workflows/docs.yml/badge.svg)](https://github.com/rolehippie/telegraf/actions/workflows/docs.yml)
 [![Galaxy Workflow](https://github.com/rolehippie/telegraf/actions/workflows/galaxy.yml/badge.svg)](https://github.com/rolehippie/telegraf/actions/workflows/galaxy.yml)
 [![License: Apache-2.0](https://img.shields.io/github/license/rolehippie/telegraf)](https://github.com/rolehippie/telegraf/blob/master/LICENSE)
 [![Ansible Role](https://img.shields.io/badge/role-rolehippie.telegraf-blue)](https://galaxy.ansible.com/rolehippie/telegraf)
@@ -61,7 +61,6 @@ Building and improving this Ansible role have been sponsored by my current and p
 ## Requirements
 
 - Minimum Ansible version: `2.10`
-
 
 ## Default Variables
 

@@ -1,13 +1,13 @@
 ---
 - name: Remove legacy key
-  apt_key:
+  ansible.builtin.apt_key:
     id: 05CE15085FC09D18E99EFB22684A14CF2582E0C5
     state: absent
   tags:
     - telegraf
 
 - name: Remove legacy repo
-  apt_repository:
+  ansible.builtin.apt_repository:
     repo: "deb https://repos.influxdata.com/{{ telegraf_repo_distribution | default(ansible_distribution) | lower }} {{ telegraf_repo_release | default(ansible_distribution_release) }} stable"
     filename: telegraf
     update_cache: False
@@ -16,14 +16,14 @@
     - telegraf
 
 - name: Download repo key
-  shell:
+  ansible.builtin.shell:
     cmd: "curl -sSL 'https://repos.influxdata.com/influxdata-archive_compat.key' | gpg --dearmor --output {{ telegraf_keyring }}"
     creates: "{{ telegraf_keyring }}"
   tags:
     - telegraf
 
 - name: Add apt repository
-  apt_repository:
+  ansible.builtin.apt_repository:
     repo: "deb [signed-by={{ telegraf_keyring }}] https://repos.influxdata.com/{{ telegraf_repo_distribution | default(ansible_distribution) | lower }} {{ telegraf_repo_release | default(ansible_distribution_release) }} stable"
     filename: telegraf
     update_cache: True
@@ -34,14 +34,14 @@
 - name: Install required packages
   loop:
     - telegraf
-  package:
+  ansible.builtin.package:
     name: "{{ item }}"
     state: present
   tags:
     - telegraf
 
 - name: Combine default lists
-  set_fact:
+  ansible.builtin.set_fact:
     telegraf_processors: "{{ telegraf_processors_default + telegraf_processors_extra }}"
     telegraf_aggregators: "{{ telegraf_aggregators_default + telegraf_aggregators_extra }}"
     telegraf_plugins: "{{ telegraf_plugins_default + telegraf_plugins_extra }}"
@@ -52,7 +52,7 @@
   when: telegraf_templates | default(False)
   register: telegraf_templates_find
   delegate_to: localhost
-  find:
+  ansible.builtin.find:
     paths: "{{ telegraf_templates }}"
     file_type: file
   tags:
@@ -65,7 +65,7 @@
   when: telegraf_templates | default(False)
   notify:
     - Restart telegraf
-  template:
+  ansible.builtin.template:
     src: "{{ item.path }}"
     dest: /etc/telegraf/telegraf.d/{{ item.path | basename }}
     owner: root
@@ -78,7 +78,7 @@
   notify:
     - Restart telegraf
   when: requires_docker_group
-  user:
+  ansible.builtin.user:
     name: telegraf
     groups: docker
     append: True
@@ -89,7 +89,7 @@
   notify:
     - Restart telegraf
   when: requires_sudo_group
-  user:
+  ansible.builtin.user:
     name: telegraf
     groups: sudo
     append: True
@@ -99,7 +99,7 @@
 - name: Write config file
   notify:
     - Restart telegraf
-  template:
+  ansible.builtin.template:
     src: config.j2
     dest: /etc/telegraf/telegraf.conf
     owner: root
@@ -109,7 +109,7 @@
     - telegraf
 
 - name: Start telegraf service
-  systemd:
+  ansible.builtin.systemd:
     name: telegraf
     state: started
     daemon_reload: True

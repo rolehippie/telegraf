@@ -1,5 +1,13 @@
 # Changelog
 
+## [2.0.0](https://github.com/rolehippie/telegraf/compare/v1.1.0...v2.0.0) (2024-02-12)
+
+
+### Features
+
+* drop support for ubuntu 18.04 ([f427910](https://github.com/rolehippie/telegraf/commit/f427910aa12be05f898403988c50d066ba5448ca))
+* used full qualified collection names ([d724799](https://github.com/rolehippie/telegraf/commit/d72479992d7467558bf4a2fb676db65a87202fbf))
+
 ## [1.1.0](https://github.com/rolehippie/telegraf/compare/v1.0.0...v1.1.0) (2023-04-17)
 
 

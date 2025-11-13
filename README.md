@@ -1,4 +1,4 @@
-# workspace
+# telegraf
 
 [![Source Code](https://img.shields.io/badge/github-source%20code-blue?logo=github&logoColor=white)](https://github.com/rolehippie/telegraf)
 [![General Workflow](https://github.com/rolehippie/telegraf/actions/workflows/general.yml/badge.svg)](https://github.com/rolehippie/telegraf/actions/workflows/general.yml)
@@ -286,7 +286,7 @@ telegraf_metric_buffer_limit: 10000
 
 ### telegraf_omit_hostname
 
-If set to True, do no set the host tag in the telegraf agent
+If set to true, do no set the host tag in the telegraf agent
 
 #### Default value
 

@@ -11,13 +11,13 @@
   quiet = {{ telegraf_quiet | lower }}
   logtarget = "{{ telegraf_logtarget }}"
   logfile = "{{ telegraf_logfile }}"
-{% if telegraf_logfile_rotation_interval | default(False) %}
+{% if telegraf_logfile_rotation_interval | default(false) %}
   logfile_rotation_interval = "{{ telegraf_logfile_rotation_interval }}"
 {% endif %}
-{% if telegraf_logfile_rotation_max_size | default(False) %}
+{% if telegraf_logfile_rotation_max_size | default(false) %}
   logfile_rotation_max_size = "{{ telegraf_logfile_rotation_max_size }}"
 {% endif %}
-{% if telegraf_logfile_rotation_max_archives | default(False) %}
+{% if telegraf_logfile_rotation_max_archives | default(false) %}
   logfile_rotation_max_archives = {{ telegraf_logfile_rotation_max_archives }}
 {% endif %}
   hostname = "{{ telegraf_hostname }}"
@@ -33,10 +33,10 @@
 [[outputs.prometheus_client]]
   listen = "{{ telegraf_prometheus_listen }}"
   metric_version = {{ telegraf_prometheus_version }}
-{% if telegraf_prometheus_username | default(False) %}
+{% if telegraf_prometheus_username | default(false) %}
   basic_username = "{{ telegraf_prometheus_username }}"
 {% endif %}
-{% if telegraf_prometheus_password | default(False) %}
+{% if telegraf_prometheus_password | default(false) %}
   basic_password = "{{ telegraf_prometheus_password }}"
 {% endif %}
 {% if telegraf_processors is defined and telegraf_processors is iterable %}
@@ -56,7 +56,7 @@
 {% for item in telegraf_aggregators %}
 
 [[aggregators.{{ item.plugin }}]]
-{% if item.period | default(False) %}
+{% if item.period | default(false) %}
   period = "{{ item.interval }}s"
 {% endif %}
 {% if item.config is defined and item.config is iterable %}
@@ -72,7 +72,7 @@
 {% for item in telegraf_plugins %}
 
 [[inputs.{{ item.plugin }}]]
-{% if item.interval | default(False) %}
+{% if item.interval | default(false) %}
   interval = "{{ item.interval }}s"
 {% endif %}
 {% if item.config is defined and item.config is iterable %}

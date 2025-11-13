@@ -8,16 +8,16 @@
 # telegraf_repo_release:
 
 # @var requires_docker_group:description: Optionally disable docker group join
-requires_docker_group: True
+requires_docker_group: true
 
 # @var requires_sudo_group:description: Optionally disable sudo group join
-requires_sudo_group: True
+requires_sudo_group: true
 
 # @var telegraf_interval:description: Default data collection interval for all inputs
 telegraf_interval: 10s
 
 # @var telegraf_round_interval:description: Rounds collection interval to interval
-telegraf_round_interval: True
+telegraf_round_interval: true
 
 # @var telegraf_metric_batch_size:description: Telegraf will send metrics to outputs in batches of this amount
 telegraf_metric_batch_size: 1000
@@ -38,10 +38,10 @@ telegraf_flush_jitter: 0s
 telegraf_precision:
 
 # @var telegraf_debug:description: Log at debug level
-telegraf_debug: False
+telegraf_debug: false
 
 # @var telegraf_quiet:description: Log only error level messages
-telegraf_quiet: False
+telegraf_quiet: false
 
 # @var telegraf_logtarget:description: Log target controls the destination for logs
 telegraf_logtarget: stderr
@@ -61,8 +61,8 @@ telegraf_logfile_rotation_max_archives:
 # @var telegraf_hostname:description: Override default hostname
 telegraf_hostname: '{{ inventory_hostname }}'
 
-# @var telegraf_omit_hostname:description: If set to True, do no set the host tag in the telegraf agent
-telegraf_omit_hostname: False
+# @var telegraf_omit_hostname:description: If set to true, do no set the host tag in the telegraf agent
+telegraf_omit_hostname: false
 
 # @var telegraf_templates:description: Path to templates loaded into telegraf.d directory
 telegraf_templates:

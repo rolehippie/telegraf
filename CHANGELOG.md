@@ -1,5 +1,12 @@
 # Changelog
 
+## [2.1.0](https://github.com/rolehippie/telegraf/compare/v2.0.0...v2.1.0) (2025-11-17)
+
+
+### Features
+
+* apply new repo structure and update linting ([a556848](https://github.com/rolehippie/telegraf/commit/a556848e5deaca41a935eee097c7c6d71b76e7ee))
+
 ## [2.0.0](https://github.com/rolehippie/telegraf/compare/v1.1.0...v2.0.0) (2024-02-12)
 
 

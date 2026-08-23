@@ -18,7 +18,7 @@
 - name: Download repo key
   register: telegraf_key_download
   ansible.builtin.get_url:
-    url: https://repos.influxdata.com/influxdata-archive_compat.key
+    url: https://repos.influxdata.com/influxdata-archive.key
     dest: "{{ telegraf_keyring }}.asc"
     mode: u=rw,g=r,o=r
     force: true

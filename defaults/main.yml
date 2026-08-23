@@ -143,8 +143,8 @@ telegraf_plugins_default:
     config:
       - endpoint = "unix:///var/run/docker.sock"
       - timeout = "5s"
-      - perdevice = true
-      - total = true
+      - perdevice_include = ["cpu", "blkio", "network"]
+      - total_include = ["cpu", "blkio", "network"]
   - plugin: filestat
     config:
       - files = ["/var/log/**.log"]

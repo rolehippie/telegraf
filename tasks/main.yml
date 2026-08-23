@@ -69,7 +69,9 @@
     - telegraf
 
 - name: Find template files
-  when: telegraf_templates | default(false)
+  when:
+    - telegraf_templates is not none
+    - telegraf_templates | length > 0
   register: telegraf_templates_find
   delegate_to: localhost
   ansible.builtin.find:
@@ -82,7 +84,9 @@
   loop: "{{ telegraf_templates_find.files }}"
   loop_control:
     label: "/etc/telegraf/telegraf.d/{{ item.path | basename }}"
-  when: telegraf_templates | default(false)
+  when:
+    - telegraf_templates is not none
+    - telegraf_templates | length > 0
   notify:
     - Restart telegraf
   ansible.builtin.template:
@@ -97,7 +101,8 @@
 - name: Add docker group
   notify:
     - Restart telegraf
-  when: requires_docker_group
+  when:
+    - requires_docker_group
   ansible.builtin.user:
     name: telegraf
     groups: docker
@@ -108,7 +113,8 @@
 - name: Add sudo group
   notify:
     - Restart telegraf
-  when: requires_sudo_group
+  when:
+    - requires_sudo_group
   ansible.builtin.user:
     name: telegraf
     groups: sudo

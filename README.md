@@ -47,8 +47,6 @@ Building and improving this Ansible role have been sponsored by my current and p
   - [telegraf_prometheus_username](#telegraf_prometheus_username)
   - [telegraf_prometheus_version](#telegraf_prometheus_version)
   - [telegraf_quiet](#telegraf_quiet)
-  - [telegraf_repo_distribution](#telegraf_repo_distribution)
-  - [telegraf_repo_release](#telegraf_repo_release)
   - [telegraf_round_interval](#telegraf_round_interval)
   - [telegraf_templates](#telegraf_templates)
 - [Discovered Tags](#discovered-tags)
@@ -463,26 +461,6 @@ Log only error level messages
 
 ```YAML
 telegraf_quiet: false
-```
-
-### telegraf_repo_distribution
-
-Enforce a specific distribution for repo source
-
-#### Default value
-
-```YAML
-telegraf_repo_distribution | default(ansible_facts['distribution']) | lower
-```
-
-### telegraf_repo_release
-
-Enforce a specific release for repo source
-
-#### Default value
-
-```YAML
-telegraf_repo_release | default(ansible_facts['distribution_release'])
 ```
 
 ### telegraf_round_interval

@@ -472,7 +472,7 @@ Enforce a specific distribution for repo source
 #### Default value
 
 ```YAML
-telegraf_repo_distribution | default(ansible_distribution) | lower
+telegraf_repo_distribution | default(ansible_facts['distribution']) | lower
 ```
 
 ### telegraf_repo_release
@@ -482,7 +482,7 @@ Enforce a specific release for repo source
 #### Default value
 
 ```YAML
-telegraf_repo_release | default(ansible_distribution_release)
+telegraf_repo_release | default(ansible_facts['distribution_release'])
 ```
 
 ### telegraf_round_interval

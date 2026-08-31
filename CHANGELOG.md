@@ -1,5 +1,11 @@
 # Changelog
 
+## [2.3.1](https://github.com/rolehippie/telegraf/compare/v2.3.0...v2.3.1) (2026-08-31)
+
+### Dependencies
+
+* **patch:** update dependency pipx:ansible-doctor to v8.4.1 ([#70](https://github.com/rolehippie/telegraf/issues/70)) ([0362b62](https://github.com/rolehippie/telegraf/commit/0362b62ce1a327dec65921a51515fb3306193879))
+
 ## [2.3.0](https://github.com/rolehippie/telegraf/compare/v2.2.0...v2.3.0) (2026-08-24)
 
 ### Features

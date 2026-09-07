@@ -38,7 +38,7 @@
   register: telegraf_key_convert
   changed_when: telegraf_key_convert.rc == 0
   ansible.builtin.command:
-    cmd: "gpg --dearmor -o {{ telegraf_keyring }} {{ telegraf_keyring }}.asc"
+    cmd: "gpg --batch --yes --dearmor -o {{ telegraf_keyring }} {{ telegraf_keyring }}.asc"
   tags:
     - telegraf
 

@@ -1,5 +1,15 @@
 # Changelog
 
+## [2.4.0](https://github.com/rolehippie/telegraf/compare/v2.3.1...v2.4.0) (2026-09-07)
+
+### Bugfixes
+
+* use batch for gpg calls ([ebf9d59](https://github.com/rolehippie/telegraf/commit/ebf9d59824bd3097e8fb7dd05de4dbc076c99fe8))
+
+### Dependencies
+
+* **minor:** update dependency community.docker to >=5.3.0,<5.4.0 ([#71](https://github.com/rolehippie/telegraf/issues/71)) ([feac713](https://github.com/rolehippie/telegraf/commit/feac713d538bb853ac568e82d0a91f7e812c91bd))
+
 ## [2.3.1](https://github.com/rolehippie/telegraf/compare/v2.3.0...v2.3.1) (2026-08-31)
 
 ### Dependencies

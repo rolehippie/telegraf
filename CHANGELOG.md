@@ -1,5 +1,18 @@
 # Changelog
 
+## [2.5.0](https://github.com/rolehippie/telegraf/compare/v2.4.0...v2.5.0) (2026-10-05)
+
+### Dependencies
+
+* **minor:** update dependency community.docker to >=5.4.0,<5.5.0 ([#80](https://github.com/rolehippie/telegraf/issues/80)) ([af5268b](https://github.com/rolehippie/telegraf/commit/af5268b7d12bac554cff3de31e04200e605501ad))
+* **mise:** update dependency pipx:ansible-core to v2.21.4 ([#73](https://github.com/rolehippie/telegraf/issues/73)) ([efa4810](https://github.com/rolehippie/telegraf/commit/efa4810c2fbca8bcfe4e575aa9fcf661ba059f7c))
+* **mise:** update dependency pipx:ansible-doctor to v8.4.2 ([#75](https://github.com/rolehippie/telegraf/issues/75)) ([edfdf53](https://github.com/rolehippie/telegraf/commit/edfdf530bb5b45b015ff45aba4809b9d1e7cbd35))
+* **mise:** update dependency pipx:ansible-lint to v26.9.0 ([#76](https://github.com/rolehippie/telegraf/issues/76)) ([e12bc7b](https://github.com/rolehippie/telegraf/commit/e12bc7bcbabda81890984494be7d7ece9f54f889))
+* **mise:** update dependency pipx:molecule to v26.9.0 ([#77](https://github.com/rolehippie/telegraf/issues/77)) ([453de92](https://github.com/rolehippie/telegraf/commit/453de9210052710cf3f9848fabd6086125cf8885))
+* **mise:** update dependency prek to v0.5.3 ([#74](https://github.com/rolehippie/telegraf/issues/74)) ([327ef4b](https://github.com/rolehippie/telegraf/commit/327ef4babfd7cd5750d808ca5786e215c426683f))
+* **mise:** update dependency prek to v0.5.4 ([#78](https://github.com/rolehippie/telegraf/issues/78)) ([1aaa08a](https://github.com/rolehippie/telegraf/commit/1aaa08a50a2ea7188679f8d0c0c90e8153883b69))
+* **mise:** update dependency prek to v0.5.5 ([#81](https://github.com/rolehippie/telegraf/issues/81)) ([b116d08](https://github.com/rolehippie/telegraf/commit/b116d08e73fd4f5f516c139be05813ddf132ef9d))
+
 ## [2.4.0](https://github.com/rolehippie/telegraf/compare/v2.3.1...v2.4.0) (2026-09-07)
 
 ### Bugfixes
